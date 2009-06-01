@@ -1,0 +1,14 @@
+
+
+use ExtUtils::MakeMaker;
+# See lib/ExtUtils/MakeMaker.pm for details of how to influence
+# the contents of the Makefile that is written.
+WriteMakefile(
+    NAME         => 'DateTime::AATW',
+    VERSION_FROM => 'lib/DateTime/AATW.pm', # finds \$VERSION
+    AUTHOR       => 'Kevin C. McGrath (kmcgrath@baknet.com)',
+    ABSTRACT     => 'Module abstract (<= 44 characters) goes here',
+    PREREQ_PM    => {
+                     'Test::Simple' => 0.44,
+                    },
+);
