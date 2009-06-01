@@ -1,4 +1,10 @@
 Revision history for Perl module DateTime::AATW
+0.03 Mon Jun  1 16:13:38 EDT 2009
+    - Using most recent versions of DateTime and DateTime::TimeZone
+    - Updated tests to reflect version changes
+    - Fixed one of the hour build hashes
+    - More Tests
+
 0.02 Mon Jun  1 13:30:25 EDT 2009
     - Corrected lookup hash references for multiple functions
 

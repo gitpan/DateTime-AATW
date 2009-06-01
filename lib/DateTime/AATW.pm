@@ -88,7 +88,7 @@ use strict;
 use DateTime;
 use DateTime::TimeZone;
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 
 =head1 CONSTRUCTOR
@@ -260,7 +260,7 @@ sub hour_zones_map {
             }
         }
     } else {
-        map {$hour_zones_map->{$_} = $self->{_hour_zone_map}->{$_}->{zones}} keys %{$self->{_hour_zones_map}};
+        map {$hour_zones_map->{$_} = $self->{_hour_zone_map}->{$_}->{zones}} keys %{$self->{_hour_zone_map}};
     }
 
     return $hour_zones_map;
@@ -331,7 +331,7 @@ sub dt_zones_map {
     my $dt_zones_map = {};
     if (@datetimes > 0) {
         foreach my $dt (@datetimes) {
-            if (UNIVERSAL::isa( $dt, "DateTime::TimeZone" )) {
+            if (UNIVERSAL::isa( $dt, "DateTime" )) {
                 $dt_zones_map->{$dt} = $self->{_time_zone_map}->{$dt}->{zones};
             } else {
                 return undef;
@@ -466,13 +466,13 @@ sub _build_lookups {
 
         $zone_time_map->{$name}->{dt} = $new_dt;
         
-        $time_zone_map->{$new_dt}->{dt} = $new_dt unless $time_zone_map->{$dt}->{dt};
+        $time_zone_map->{$new_dt}->{dt} = $new_dt unless $time_zone_map->{$new_dt}->{dt};
         push @{$time_zone_map->{$new_dt}->{zones}}, $tz;
         push @{$time_zone_map->{$new_dt}->{zone_names}}, $tz_name;
 
-        $hour_zone_map->{$new_dt->hour}->{dt} = $new_dt unless $time_zone_map->{$dt->hour}->{dt};
+        $hour_zone_map->{int($new_dt->hour)}->{dt} = $new_dt unless $hour_zone_map->{int($new_dt->hour)}->{dt};
         push @{$hour_zone_map->{int($new_dt->hour)}->{zones}}, $tz;
-        push @{$time_zone_map->{$new_dt}->{zone_names}}, $tz_name;
+        push @{$hour_zone_map->{int($new_dt->hour)}->{zone_names}}, $tz_name;
 
     }
 

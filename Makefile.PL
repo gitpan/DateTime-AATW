@@ -10,6 +10,7 @@ WriteMakefile(
     ABSTRACT     => 'Module abstract (<= 44 characters) goes here',
     PREREQ_PM    => {
                      'Test::Simple' => 0.44,
-                     'DateTime'     => 0,
+                     'DateTime'     => 0.50,
+                     'DateTime::TimeZone' => 0.91,
                     },
 );
