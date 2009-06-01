@@ -88,7 +88,7 @@ use strict;
 use DateTime;
 use DateTime::TimeZone;
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 
 =head1 CONSTRUCTOR
@@ -293,13 +293,13 @@ sub hour_zone_names_map {
     if (@hours > 0) {
         foreach my $hour (@hours) {
             if ($hour >= 0 && $hour <= 23) {
-                $hour_zones_map->{$hour} = $self->{_hour_zones_map}->{$hour}->{zone_names};
+                $hour_zones_map->{$hour} = $self->{_hour_zone_map}->{$hour}->{zone_names};
             } else {
                 return undef;
             }
         }
     } else {
-        map {$hour_zones_map->{$_} = $self->{_hour_zones_map}->{$_}->{zone_names}} keys %{$self->{_hour_zones_map}};
+        map {$hour_zones_map->{$_} = $self->{_hour_zone_map}->{$_}->{zone_names}} keys %{$self->{_hour_zone_map}};
     }
 
     return $hour_zones_map;
@@ -332,13 +332,13 @@ sub dt_zones_map {
     if (@datetimes > 0) {
         foreach my $dt (@datetimes) {
             if (UNIVERSAL::isa( $dt, "DateTime::TimeZone" )) {
-                $dt_zones_map->{$dt} = $self->{_dt_zones_map}->{$dt}->{zones};
+                $dt_zones_map->{$dt} = $self->{_time_zone_map}->{$dt}->{zones};
             } else {
                 return undef;
             }
         }
     } else {
-        map {$dt_zones_map->{$_} = $self->{_dt_zones_map}->{$_}->{zones}} keys %{$self->{_dt_zones_map}};
+        map {$dt_zones_map->{$_} = $self->{_time_zone_map}->{$_}->{zones}} keys %{$self->{_time_zone_map}};
     }
 
     return $dt_zones_map;
@@ -371,13 +371,13 @@ sub dt_zone_names_map {
     if (@datetimes > 0) {
         foreach my $dt (@datetimes) {
             if (UNIVERSAL::isa( $dt, "DateTime::TimeZone" )) {
-                $dt_zones_map->{$dt} = $self->{_dt_zones_map}->{$dt}->{zone_names};
+                $dt_zones_map->{$dt} = $self->{_time_zone_map}->{$dt}->{zone_names};
             } else {
                 return undef;
             }
         }
     } else {
-        map {$dt_zones_map->{$_} = $self->{_dt_zones_map}->{$_}->{zone_names}} keys %{$self->{_dt_zones_map}};
+        map {$dt_zones_map->{$_} = $self->{_time_zone_map}->{$_}->{zone_names}} keys %{$self->{_time_zone_map}};
     }
 
     return $dt_zones_map;

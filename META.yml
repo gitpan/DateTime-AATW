@@ -1,6 +1,6 @@
 --- #YAML:1.0
 name:                DateTime-AATW
-version:             0.01
+version:             0.02
 abstract:            Module abstract (<= 44 characters) goes here
 license:             ~
 author:              
@@ -8,6 +8,7 @@ author:
 generated_by:        ExtUtils::MakeMaker version 6.44
 distribution_type:   module
 requires:     
+    DateTime:                      0
     Test::Simple:                  0.44
 meta-spec:
     url:     http://module-build.sourceforge.net/META-spec-v1.3.html

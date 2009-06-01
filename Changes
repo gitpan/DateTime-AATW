@@ -1,4 +1,6 @@
 Revision history for Perl module DateTime::AATW
+0.02 Mon Jun  1 13:30:25 EDT 2009
+    - Corrected lookup hash references for multiple functions
 
 0.01 Sat May 30 20:11:10 2009
     - original version; created by ExtUtils::ModuleMaker 0.51
